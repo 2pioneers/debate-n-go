@@ -13,7 +13,11 @@ debate
         $stateProvider
             .state('/',{
                 url:'/',
-                template: '<h1>Congrats your app is working</h1>'
+                templateUrl: 'views/main.html',
+                contollerProvider: function($stateParams) {
+                    var ctrlName = $stateParams.type + "Controller";
+                    return ctrlName;
+                }
             })
     })
     .controller('appCtrl',function($scope){
