@@ -23,7 +23,6 @@ module.exports = function(grunt) {
                 asi:true,
                 globals: {
                     module: true,
-                    require: true,
                     define: true,
                     console: true,
                     angular: true
