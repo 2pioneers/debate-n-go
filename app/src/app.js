@@ -13,11 +13,8 @@ debate
         $stateProvider
             .state('/',{
                 url:'/',
-                templateUrl: 'views/main.html',
-                contollerProvider: function($stateParams) {
-                    var ctrlName = $stateParams.type + "Controller";
-                    return ctrlName;
-                }
+                templateUrl: 'view/main.html',
+                contoller: 'appCtrl'
             })
     })
     .controller('appCtrl',function($scope){
