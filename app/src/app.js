@@ -12,6 +12,7 @@ debate
 
         $stateProvider
             .state('/',{
+
                 url:'/',
                 templateUrl: 'view/main.html',
                 contoller: 'appCtrl'
@@ -23,6 +24,9 @@ debate
         page : "Home"
     }
 
-})
+    })
+    .controller('navCtrl',function($scope){
+
+    });
 
 

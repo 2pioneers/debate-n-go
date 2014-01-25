@@ -2,11 +2,75 @@
 <html ng-app="debate" ng-controller="appCtrl">
 <head>
     <title> {{ app.title }} | {{ app.page }}</title>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="app.css"/>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body >
-<div ui-view ></div>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="row" id="selections">
+        <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-body">
+                Option 1
+            </div>
+            <div class="panel-footer"><button type="button" class="btn btn-info">Choose</button></div>
+        </div>
+    </div>
+
+        <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-body">
+                Option 2
+            </div>
+            <div class="panel-footer"><button type="button" class="btn btn-info">Choose</button></div>
+        </div>
+    </div>
+
+        <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-body">
+                Option 3
+            </div>
+            <div class="panel-footer"><button type="button" class="btn btn-info">Choose</button></div>
+        </div>
+    </div>
+    </div>
+
+
+
+</div><!-- /.container -->
 </body>
 <script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="libs/angular/angular.js"></script>
 <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="libs/angular-bootstrap/ui-bootstrap.js"></script>
