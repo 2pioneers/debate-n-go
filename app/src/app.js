@@ -27,6 +27,13 @@ debate
     })
     .controller('navCtrl',function($scope){
 
+    })
+
+.directive('closebtn',function(){
+        return {
+            restrict: 'E',
+            template:'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  '
+        }
     });
 
 
