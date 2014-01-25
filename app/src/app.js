@@ -1,7 +1,7 @@
 /**
  * Created by chief on 1/18/14.
  */
-var debate = angular.module('debate',['ui.router','ui.bootstrap','nvd3ChartDirectives']);
+var debate = angular.module('debate',['ui.router']);
 
 
 debate
