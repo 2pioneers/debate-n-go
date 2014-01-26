@@ -24,13 +24,13 @@
             </button>
             <a class="navbar-brand" href="#">Villas at Eagle View South</a>
         </div>
-        
+
     </div>
 </div>
 
 <div class="container">
-
-    <div class="row" id="selections">
+    <div class="jumbotron">
+        <div class="row" id="selections">
         <div class="alert alert-warning alert-dismissable" ng-show="">
             <closebtn ></closebtn>
             <strong>Speak up!</strong> You have not indicated your opinion!</div>
@@ -67,12 +67,57 @@
         </div>
 
     </div>
+    </div>
 
     <div class="row">
         <div class="col-md-6" ng-controller="chartCtrl">
-            <div google-chart chart="chart" style="{{chart.cssStyle}}"/>
+            <div google-chart chart="chart" style="{{chart.cssStyle}}" ></div>
         </div>
-        <div class="col-md-6" ></div>
+
+        <div class="col-md-6" >
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Topic Post</h3>
+                </div>
+                <div class="panel-body">
+                    Here's why I think you should vote...
+                </div>
+                <div class="panel-footer"><stong>1234 Yukon Cir</stong><div class="pull-right">5 comments<span class="caret"></span></div> </div>
+
+                <ul class="list-group" ng-show="">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Option 3 is best!</h3>
+                </div>
+                <div ng-show="">
+                    <div class="panel-body">
+                        Here's why I think you should vote...
+                    </div>
+                    <div class="panel-footer"><stong>1130 Yukon Cir</stong><div class="pull-right">2 comments<span class="caret"></span></div> </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Option 2 will rock your world!</h3>
+                </div>
+                <div ng-show="">
+                    <div class="panel-body">
+                        Here's why I think you should vote...
+                    </div>
+                    <div class="panel-footer"><stong>1130 Yukon Cir</stong><div class="pull-right">2 comments<span class="caret"></span></div> </div>
+                </div>
+            </div>
+
+        </div>
+
 
     </div>
 

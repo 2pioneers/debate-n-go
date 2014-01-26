@@ -32,7 +32,7 @@ debate
         $scope.chart = {
             "type": "PieChart",
             "displayed": true,
-            "cssStyle": "height:600px; width:100%;",
+            "cssStyle": "width:100%;",
             "data": {
                 "cols": [
                     {
@@ -41,38 +41,7 @@ debate
                         "type": "string",
                         "p": {}
                     },
-                    {
-                        "id": "laptop-id",
-                        "label": "Laptop",
-                        "type": "number",
-                        "p": {}
-                    },
-                    {
-                        "id": "desktop-id",
-                        "label": "Desktop",
-                        "type": "number",
-                        "p": {}
-                    },
-                    {
-                        "id": "server-id",
-                        "label": "Server",
-                        "type": "number",
-                        "p": {}
-                    },
-                    {
-                        "id": "cost-id",
-                        "label": "Shipping",
-                        "type": "number"
-                    },
-                    {
-                        "id": "",
-                        "role": "tooltip",
-                        "type": "string",
-                        "p": {
-                            "role": "tooltip",
-                            "html": true
-                        }
-                    }
+
                 ],
                 "rows": [
                     {
@@ -148,16 +117,11 @@ debate
                 ]
             },
             "options": {
-                "title": "Sales per month",
+                "title": "The Breakdown so Far",
                 "isStacked": "true",
                 "fill": 20,
                 "displayExactValues": true,
-                "vAxis": {
-                    "title": "Sales unit",
-                    "gridlines": {
-                        "count": 8
-                    }
-                },
+
                 "hAxis": {
                     "title": "Date"
                 },
@@ -169,9 +133,7 @@ debate
             "view": {
                 "columns": [
                     0,
-                    1,
-                    2,
-                    4
+
                 ]
             }
         }
