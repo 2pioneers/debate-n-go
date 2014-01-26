@@ -72,8 +72,19 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6" ng-controller="chartCtrl">
-
+        <div class="col-md-6" >
+            <div ng-controller="chartCtrl">
+                <nvd3-pie-chart
+                        data="exampleData"
+                        id="exampleId"
+                        width="550"
+                        height="350"
+                        x="xFunction()"
+                        y="yFunction()"
+                        showLabels="true">
+                    <svg></svg>
+                </nvd3-pie-chart>
+            </div>
         </div>
 
         <div class="col-md-6" >
@@ -130,7 +141,7 @@
 <script src="libs/angular/angular.js"></script>
 <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="libs/d3/d3.min.js"></script>
-<script src="libs/d3/nv.d3.min.js"></script>
+<script src="libs/nvd3/nv.d3.min.js"></script>
 <script src="libs/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
 <script src="app.js"></script>
 </html>
