@@ -1,15 +1,152 @@
 <!DOCTYPE html>
+<meta charset="utf-8">
 <html ng-app="debate" ng-controller="appCtrl">
 <head>
     <title> {{ app.title }} | {{ app.page }}</title>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="libs/nvd3/nv.d3.min.css"/>
+    <link rel="stylesheet" href="app.css"/>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 </head>
 <body >
-<div ui-view ></div>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Villas at Eagle View South</a>
+        </div>
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="well">
+        <div class="row"><button type="button" class="close" aria-hidden="true">&times;</button></div>
+        <div class="row" id="selections">
+        <div class="alert alert-warning alert-dismissable" ng-show="">
+            <closebtn ></closebtn>
+            <strong>Speak up!</strong> You have not indicated your opinion!</div>
+        <div class="alert alert-success" ng-show="">
+            <closebtn ></closebtn>
+            <strong>Thanks!</strong> Browse and start discussions below</div>
+        <div class="alert alert-info" ng-show="">
+            <closebtn ></closebtn>
+            Your prefence is indicated, but you may Click to change</div>
+
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    Option 1
+                </div>
+                <div class="panel-footer"><button type="button" class="btn btn-info btn-block">Choose</button></div>
+            </div>
+        </div>
+        <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-body">
+                Option 2
+            </div>
+            <div class="panel-footer"><button type="button" class="btn btn-info btn-block">Choose</button></div>
+        </div>
+    </div>
+        <div class="col-md-4">
+            <div class="panel panel-info">
+                <div class="panel-body">
+                    Option 3
+                </div>
+                <div class="panel-footer"><button type="button" class="btn btn-info btn-block">Choose</button></div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6" >
+
+                <nvd3-pie-chart ng-controller="chartCtrl"
+                        data="exampleData"
+                        id="exampleId"
+                        width="600"
+                        height="500"
+                        margin="{left:0,top:0,bottom:0,right:0}"
+                        x="xFunction()"
+                        y="yFunction()"
+                        tooltips="true"
+                        showLabels="true"
+                        labelType="percent"
+		                interactive="true">
+                    <svg></svg>
+                </nvd3-pie-chart>
+
+        </div>
+
+        <div class="col-md-6" >
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Topic Post</h3>
+                </div>
+                <div class="panel-body">
+                    Here's why I think you should vote...
+                </div>
+                <div class="panel-footer"><stong>1234 Yukon Cir</stong><div class="pull-right">5 comments<span class="caret"></span></div> </div>
+
+                <ul class="list-group" ng-show="">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Morbi leo risus</li>
+                    <li class="list-group-item">Porta ac consectetur ac</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Option 3 is best!</h3>
+                </div>
+                <div ng-show="">
+                    <div class="panel-body">
+                        Here's why I think you should vote...
+                    </div>
+                    <div class="panel-footer"><stong>1130 Yukon Cir</stong><div class="pull-right">2 comments<span class="caret"></span></div> </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Option 2 will rock your world!</h3>
+                </div>
+                <div ng-show="">
+                    <div class="panel-body">
+                        Here's why I think you should vote...
+                    </div>
+                    <div class="panel-footer"><stong>1130 Yukon Cir</stong><div class="pull-right">2 comments<span class="caret"></span></div> </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div><!-- /.container -->
 </body>
 <script src="libs/jquery/jquery.min.js"></script>
+<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="libs/angular/angular.js"></script>
-<script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
-<script src="libs/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="libs/d3/d3.min.js"></script>
+<script src="libs/nvd3/nv.d3.min.js"></script>
 <script src="libs/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
 <script src="app.js"></script>
 </html>
