@@ -4,6 +4,7 @@
     <title> {{ app.title }} | {{ app.page }}</title>
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="libs/nvd3/nv.d3.min.css"/>
     <link rel="stylesheet" href="app.css"/>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -29,7 +30,8 @@
 </div>
 
 <div class="container">
-    <div class="jumbotron">
+    <div class="well">
+        <div class="row"><button type="button" class="close" aria-hidden="true">&times;</button></div>
         <div class="row" id="selections">
         <div class="alert alert-warning alert-dismissable" ng-show="">
             <closebtn ></closebtn>
@@ -71,7 +73,7 @@
 
     <div class="row">
         <div class="col-md-6" ng-controller="chartCtrl">
-            <div google-chart chart="chart" style="{{chart.cssStyle}}" ></div>
+
         </div>
 
         <div class="col-md-6" >
@@ -127,6 +129,8 @@
 <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="libs/angular/angular.js"></script>
 <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
-<script src="libs/angular-google-chart/ng-google-chart.js"></script>
+<script src="libs/d3/d3.min.js"></script>
+<script src="libs/d3/nv.d3.min.js"></script>
+<script src="libs/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.js"></script>
 <script src="app.js"></script>
 </html>
