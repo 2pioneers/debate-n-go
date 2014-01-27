@@ -9,14 +9,11 @@
     "angular-google-chart": "~0.0.8",
     "d3": "~3.4.1",
     "moment": "~2.5.1",
-    "nvd3": "~1.1.15-beta",
-    "angularjs-nvd3-directives": "LongLiveCHIEF/angularjs-nvd3-directives#~0.0.5-beta"
+    "nvd3": "~1.1.15-beta"
   },
   "devDependencies": {},
   "resolutions": {
-    "d3": "3.3.5",
-    "angular": "~1.2.9",
-    "moment": "~2.5.1",
-    "nvd3": "~1.1.15-beta"
+    "d3": "~3.4.1",
+    "angular": "~1.2.9"
   }
 }
