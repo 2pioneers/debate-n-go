@@ -49,7 +49,6 @@ debate
             };
         }
 
-
         $scope.descriptionFunction = function(){
             return function(d){
                 return d.key;
