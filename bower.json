@@ -11,12 +11,12 @@
     "nvd3": "~1.1.15-beta",
     "angularjs-nvd3-directives": "master"
   },
-  "devDependencies": {},
+  "devDependencies": {
+  },
   "resolutions": {
     "d3": "~3.4.1",
     "angular": "~1.2.10",
     "nvd3": "~1.1.15-beta",
-    "moment": "~2.5.1",
-    "angularjs-nvd3-directives": "master"
+    "moment": "~2.5.1"
   }
 }

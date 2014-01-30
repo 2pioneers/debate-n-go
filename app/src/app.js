@@ -12,14 +12,11 @@ debate
 
         $stateProvider
             .state('/',{
-
                 url:'/',
                 templateUrl: 'view/main.html',
                 contoller: 'appCtrl'
             })
     });
-
-
 
 
 
