@@ -7,5 +7,5 @@ function closebtn(){
 		restrict: 'E',
 			template:'<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>  '
 	}
-	
+
 }
