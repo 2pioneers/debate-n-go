@@ -1,6 +1,3 @@
 [submodule "debate-api"]
 	path = services/debate-n-go-api
 	url = git://github.com/NormalGravity/debate-n-go-api.git
-[submodule "angularjs-nvd3-directives"]
-    path = app/src/scripts/modules/angularjs-nvd3-directives
-    url = git://github.com/LongLiveCHIEF/angularjs-nvd3-directives.git
