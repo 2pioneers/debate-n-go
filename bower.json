@@ -5,14 +5,9 @@
     "angular": "~1.2.10",
     "jquery": "~2.1.0",
     "bootstrap": "~3.0.3",
-    "angular-ui-router": "0.2.8-bowratic-tedium",
-    "d3": "~3.4.1",
-    "moment": "~2.5.1",
-    "nvd3": "~1.1.15-beta",
-    "angularjs-nvd3-directives": "master"
+    "angular-ui-router": "0.2.8-bowratic-tedium"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "resolutions": {
     "d3": "~3.4.1",
     "angular": "~1.2.10",
