@@ -1,7 +1,7 @@
 /**
  * Created by chief on 1/18/14.
  */
-var debate = angular.module('debate',['ui.router','ui.bootstrap','nvd3ChartDirectives']);
+var debate = angular.module('debate',['ui.router']);
 
 
 debate
@@ -13,19 +13,17 @@ debate
         $stateProvider
             .state('/',{
                 url:'/',
-                templateUrl: 'views/main.html',
-                contollerProvider: function($stateParams) {
-                    var ctrlName = $stateParams.type + "Controller";
-                    return ctrlName;
+                templateUrl: 'view/main.html',
+                contoller: function($scope){
+                    $scope.app = {
+                        title : "Eagle View South",
+                        page : "Home"
+                    }
                 }
             })
-    })
-    .controller('appCtrl',function($scope){
-    $scope.app = {
-        title : "Eagle View South",
-        page : "Home"
-    }
+    });
 
-})
+
+
 
 
