@@ -1,7 +1,7 @@
 /**
  * Created by chief on 1/18/14.
  */
-var debate = angular.module('debate',['ui.router','nvd3ChartDirectives']);
+var debate = angular.module('debate',['ui.router']);
 
 
 debate
@@ -14,7 +14,12 @@ debate
             .state('/',{
                 url:'/',
                 templateUrl: 'view/main.html',
-                contoller: 'appCtrl'
+                contoller: function($scope){
+                    $scope.app = {
+                        title : "Eagle View South",
+                        page : "Home"
+                    }
+                }
             })
     });
 
