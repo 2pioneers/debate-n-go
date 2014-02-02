@@ -1,3 +1,4 @@
-[submodule "debate-api"]
-	path = services/debate-n-go-api
-	url = git://github.com/NormalGravity/debate-n-go-api.git
+
+[submodule "api"]
+	path = api
+	url = https://github.com/NormalGravity/debate-n-go-api.git
