@@ -1,18 +1,22 @@
 @headerimg: url('images/brick.jpg');
+@bgimg: url('images/ZenBG.png');
 .headerstyle {
   background-size: contain;
   background-position: center top;
   height: 180px;
 }
 body{
-  background: ##d6dcda;
-  background-image: url("images/full-bg");
-  background-repeat: no-repeat;
-  background-size: 100%;
+  background: ##e3dede;
+  background-image: url("images/zenbg-1.png"), url("images/zenbg-2.png");
+  background-repeat: repeat-x, repeat;
+
 }
 header {
   background-image: @headerimg;
   .headerstyle;
+  -webkit-box-shadow: 5px 0px 5px 5px #000 ;
+  -moz-box-shadow: 5px 0px 5px 5px #000;
+  box-shadow: 5px 0px 5px 5px #000;
 }
 
 #primary {
