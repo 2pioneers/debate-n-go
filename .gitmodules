@@ -1,1 +1,4 @@
 
+[submodule "api"]
+	path = api
+	url = https://github.com/NormalGravity/debate-n-go-api.git
