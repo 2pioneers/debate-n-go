@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<html ng-app="debate">
+<html ng-app="debate" ng-controller="appCtrl">
 <head>
-    <title> {{ app.title }} | {{ app.page }}</title>
+    <title ng-bind="title"></title>
 
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap-theme.css"/>
@@ -14,41 +14,39 @@
     <![endif]-->
 </head>
 <body >
-<header>
-    <div class="container">
-        <nav class="navbar navbar-inverse" id="primary" role="navigation">
-            <div class="logo"><div id="villas"><img src="images/logo-stone.png" alt=""/></div></div>
-        </nav>
-    </div>
-</header>
+<div ui-view="header"></div>
 
 <div class="container">
-<div class="row">
 
 
+    <div ui-view="info"></div>
+    <div ui-view="forum"></div>
 </div>
-    <div class="modal" id="comingsoon">
+<div class="modal" id="comingsoon">
     <div class="modal-dialog" >
         <div class="modal-content">
             <div class="modal-header">
                 <h3>Welcome | <small>Villas at Eagle View South</small></h3>
             </div>
             <div class="modal-body">
-               <p> Welcome to the initial Villas at Eagle View South website.  It will continue to evolve in the months ahead to serve the 56 lot owners.</p>
+                <p> Welcome to the initial Villas at Eagle View South website.  It will continue to evolve in the months ahead to serve the 56 lot owners.</p>
                 <p>Initial Features of this site will only be available to lot owners. Click the button below if you are a resident and did not receive your login instructions email.<p></p>
             </div>
             <div class="modal-footer">
                 <div class="alert alert-warning">Lot Owners Only <span class="glyphicon glyphicon-chevron-right"></span> <button disabled type="button" class="btn btn-primary"><span class="glyphicon glyphicon-home"></span>I need to login</button></div>
-                </div>
+            </div>
         </div>
     </div>
-    </div>
-</body>
+</div>
+
 <script src="libs/jquery/jquery.min.js"></script>
 <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="libs/angular/angular.js"></script>
 <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
 <script src="app.js"></script>
+
+<script src="scripts/appCtrl.js"></script>
+<script class="scripts/directives.js"></script>
 <script>
     $('#comingsoon').modal({
         backdrop:'static',
@@ -57,4 +55,6 @@
 
     });
 </script>
+</body>
+
 </html>

@@ -3,14 +3,17 @@
 .headerstyle {
   background-size: contain;
   background-position: center top;
-  height: 180px;
+  height: 250px;
 }
-body{
-
-
+.sky-early-morning {
+  background: linear-gradient(to bottom, #94c5f8 1%,#a6e6ff 70%,#b1b5ea 100%);
 }
+.sky-twilight {
+  background: linear-gradient(to bottom, #1e528e 0%,#728a7c 50%,#e9ce5d 100%);
+}
+
 header {
-  background-image: @headerimg;
+  background: @headerimg;
   .headerstyle;
   -webkit-box-shadow: 5px 0px 5px 5px #000 ;
   -moz-box-shadow: 5px 0px 5px 5px #000;
@@ -20,7 +23,7 @@ header {
   margin-top:15px;
 }
 #primary {
-  margin: 75px auto 0px auto;
+  margin: 120px auto 0px auto;
 }
   .logo  {
     width: 75%;
@@ -31,12 +34,19 @@ header {
     #villas {
       position: relative;
       margin: 0 auto;
-      width: 220px;
-      top: -50px;
-
-      img.logo {
-        text-align: center;
-      }
-
+      width: 300px;
+      top: -100px;
     }
+  }
+
+
+  .roundabout img {
+    max-height: 280px;
+  }
+  .panel-footer {
+
+    .reply{
+      padding-left:40px;
+    }
+
   }
