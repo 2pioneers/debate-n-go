@@ -3,8 +3,7 @@
  */
 var debate = angular.module('debate',[
     'ui.router',
-    'debate.ctrl',
-    'debate.directives'
+    'debate.ctrl'
 ]);
 
 
@@ -33,7 +32,10 @@ debate
                 }
             })
 
-    });
+    })
+    .controller('appCtrl',function($scope){
+        console.info('appCtrl initiated');
+    })
 
 
 
