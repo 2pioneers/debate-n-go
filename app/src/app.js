@@ -1,7 +1,11 @@
 /**
  * Created by chief on 1/18/14.
  */
-var debate = angular.module('debate',['ui.router']);
+var debate = angular.module('debate',[
+    'ui.router',
+    'debate.ctrl',
+    'debate.directives'
+]);
 
 
 debate
@@ -11,16 +15,24 @@ debate
         $urlRouterProvider.otherwise('/');
 
         $stateProvider
-            .state('/',{
+            .state('app',{
                 url:'/',
-                templateUrl: 'view/main.html',
-                contoller: function($scope){
-                    $scope.app = {
-                        title : "Eagle View South",
-                        page : "Home"
+                views:{
+                    'header':{
+                        templateUrl:'view/header.html',
+                        controller: 'headerCtrl'
+                    },
+                    'info':{
+                        templateUrl:'view/info.html',
+                        controller: 'infoCtrl'
+                    },
+                    'forum':{
+                        templateUrl: 'view/forum.html',
+                        controller: 'forumCtrl'
                     }
                 }
             })
+
     });
 
 
