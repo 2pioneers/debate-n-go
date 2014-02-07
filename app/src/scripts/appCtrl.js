@@ -13,3 +13,6 @@ angular.module('debate.ctrl',[])
     .controller('forumCtrl',function($scope){
 
     })
+    .controller('comingsoonCtrl',function($scope, $stateParams){
+
+    })

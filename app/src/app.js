@@ -8,11 +8,11 @@ var debate = angular.module('debate',[
 
 
 debate
-    .config(function($stateProvider, $urlRouterProvider){
+    .config(function($stateProvider, $urlRouterProvider, $locationProvider){
         //
         //set up default path
-        $urlRouterProvider.otherwise('/');
 
+        $urlRouterProvider.otherwise('/');
         $stateProvider
             .state('app',{
                 url:'/',
@@ -28,13 +28,18 @@ debate
                     'forum':{
                         templateUrl: 'view/forum.html',
                         controller: 'forumCtrl'
+                    },
+                    'comingsoon':{
+                        templateUrl:'view/comingsoon.html',
+                        controller: 'comingsoonCtrl'
                     }
                 }
             })
 
-    })
-    .controller('appCtrl',function($scope){
-        console.info('appCtrl initiated');
+    });
+
+debate.controller('appCtrl',function($scope){
+
     })
 
 
