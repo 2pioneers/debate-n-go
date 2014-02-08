@@ -9,18 +9,38 @@ var debate = angular.module('debate',[
 
 
 debate
-    .config(function($stateProvider, $urlRouterProvider){
-        //
-        //set up default path
-        $urlRouterProvider.when('/hi/:userkey',function($match, $http){
-            //get params and attempt to authenticate a user, have /home wait for user promise to resolve
+    .config(function($stateProvider, $urlRouterProvider, $provide){
+        //set up application with a user
+        $provide.factory('user',function(){
+            return{
+                validate:function(match){
+                    //check local storage and url for
 
-            $http.get('http://api.evsvillas.com/index.php/login/'+$match.userkey).success(function(data){
-                console.log("userinfo: ",data);
-                
+                    $http.get('http://api.evsvillas.com/index.php/login/'+match.userkey)
+                        .success(function(data){
+                            console.log("userinfo: ",data);
+                        })
+                        .error(function(data){
+
+                        });
+                },
+                whoami: function(user){
+                    return {
+
+                    }
+                }
+            }
+        });
+
+        //set up default path
+        $urlRouterProvider.when('/hi/:userkey',function($match){
+                var promise = user.validate();
+
+            //send autorization through to auth singleton
+            $q.resolve(they).then(function(){
+                auth.whoami(they);
             });
 
-            console.log('userkey: ', $match);
         })
         $urlRouterProvider.otherwise('/home');
         $stateProvider

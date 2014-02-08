@@ -3,6 +3,10 @@
  */
 angular.module('debate.services',[])
 
-    .factory('auth',function(){
-        return {}
+    .factory('user',function(){
+
+
+
+
+
     });
