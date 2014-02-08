@@ -3,8 +3,8 @@
  */
 angular.module('debate.ctrl',[])
 
-    .controller('headerCtrl',function($rootScope){
-        $rootScope.title = 'Eagle View South';
+    .controller('headerCtrl',function($scope){
+
     })
 
     .controller('infoCtrl',function($scope){
