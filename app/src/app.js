@@ -3,7 +3,8 @@
  */
 var debate = angular.module('debate',[
     'ui.router',
-    'debate.ctrl'
+    'debate.ctrl',
+    'debate.services'
 ]);
 
 
@@ -16,9 +17,7 @@ debate
         $stateProvider
             .state('app',{
                 url:'/',
-                controller:function($scope){
-                  console.info('state controller');
-                },
+
                 views:{
                     'header':{
                         templateUrl:'view/header.html',
@@ -40,16 +39,9 @@ debate
             })
 
     });
-debate.factory('auth',function($location){
-    return {}
-});
-debate.service('user',function($scope){
-    $scope.getUserStatus();
 
-    $scope.login = auth.login();
-});
 debate.controller('appCtrl',function($scope, auth){
-    $scope.userStatus = user.getUserStatus();
+
 });
 
 

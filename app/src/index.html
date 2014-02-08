@@ -14,13 +14,8 @@
     <![endif]-->
 </head>
 <body ng-controller="appCtrl">
-<div ui-view="header"></div>
 
-<div class="container">
-    <div ui-view="info"></div>
-    <div ui-view="forum"></div>
-</div>
-<div class="modal" id="comingsoon" ui-view="comingsoon"></div>
+<div ui-view></div>
 
 <script src="libs/jquery/jquery.min.js"></script>
 <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -30,6 +25,7 @@
 
 <script src="scripts/appCtrl.js"></script>
 <script class="scripts/directives.js"></script>
+<script src="scripts/services.js"></script>
 <script>
     $('#comingsoon').modal({
         backdrop:'static',
