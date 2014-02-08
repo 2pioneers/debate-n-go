@@ -8,7 +8,7 @@ var debate = angular.module('debate',[
 
 
 debate
-    .config(function($stateProvider, $urlRouterProvider, $locationProvider){
+    .config(function($stateProvider, $urlRouterProvider){
         //
         //set up default path
 
@@ -16,6 +16,9 @@ debate
         $stateProvider
             .state('app',{
                 url:'/',
+                controller:function($scope){
+                  console.info('state controller');
+                },
                 views:{
                     'header':{
                         templateUrl:'view/header.html',
@@ -37,10 +40,17 @@ debate
             })
 
     });
+debate.factory('auth',function($location){
+    return {}
+});
+debate.service('user',function($scope){
+    $scope.getUserStatus();
 
-debate.controller('appCtrl',function($scope){
-
-    })
+    $scope.login = auth.login();
+});
+debate.controller('appCtrl',function($scope, auth){
+    $scope.userStatus = user.getUserStatus();
+});
 
 
 
