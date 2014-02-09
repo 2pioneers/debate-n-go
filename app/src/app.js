@@ -4,19 +4,17 @@
 var debate = angular.module('debate',[
     'ui.router',
     'debate.ctrl',
-    'debate.services',
-    'debate.providers'
+    'debate.services'
 ]);
 
 
 debate
-    .config(function($stateProvider, $urlRouterProvider, apiProvider){
+    .config(function($stateProvider, $urlRouterProvider, villasApiServiceProvider){
         //set up application with a user
 
         //set up default path
         $urlRouterProvider.when('/hi/:userkey',function($match){
-                apiProvider.setuserkey($match);
-                
+                villasApiServiceProvider.setuserkey($match);
         });
         $urlRouterProvider.otherwise('/home');
         $stateProvider
@@ -43,8 +41,9 @@ debate
             })
 
 })
-    .controller('appCtrl',function($rootScope){
+    .controller('appCtrl',function($rootScope,$http,$q, villasApiService){
         $rootScope.title = 'Eagle View South';
+        villasApiService.$get($q, $http);
     });
 
 

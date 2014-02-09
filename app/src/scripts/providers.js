@@ -1,9 +1,9 @@
 /**
  * Created by chief on 2/9/14.
  */
-angular.module('debate.providers',['$httpProvider','$qProvider'])
+angular.module('debate.providers',[])
 
-    .provider('apiService',function apiServiceProvider(){
+    .provider('villasApiService',function villasApiProvider(){
         var api = {
             host: 'http://api.evsvillas.com/index.php/',
             endpoints: {
@@ -12,14 +12,8 @@ angular.module('debate.providers',['$httpProvider','$qProvider'])
             }
 
         }
-        var user = {
-            nickname: null,
-            userkey:null,
-            authorized:false
-        }
         this.$get = ['$q,$http',function($q,$http){
-
-            return new apiService($q,$http);
+            return new villasApiService($q,$http);
         }]
         this.setuserkey = function(key){
 

@@ -5,8 +5,4 @@ angular.module('debate.services',[])
 
     .factory('user',function(){
 
-
-
-
-
     });
