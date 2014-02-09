@@ -7,39 +7,39 @@ var debate = angular.module('debate',[
     'debate.services'
 ]);
 
+debate.provider('api',function($httpProvider){
+    var user,autherror;
+    return {
+        $get:function(){
+            var deferred = $q.defer();
+
+            deferred.promise = $http.get('http://api.evsvillas.com/index.php/login')
+                .success(function(data){
+                        user = data;
+                })
+                .error(function(data){
+                       autherror = data;
+                });
+
+            return deferred.promise; //chains the defer into the $http promise and is returned to the calling context
+        }
+
+    }
+
+});
+
 
 debate
-    .config(function($stateProvider, $urlRouterProvider, $provide){
+    .config(function($stateProvider, $urlRouterProvider, apiProvider){
         //set up application with a user
-        $provide.factory('user',function(){
-            return{
-                validate:function(match){
-                    //check local storage and url for
-
-                    $http.get('http://api.evsvillas.com/index.php/login/'+match.userkey)
-                        .success(function(data){
-                            console.log("userinfo: ",data);
-                        })
-                        .error(function(data){
-
-                        });
-                },
-                whoami: function(user){
-                    return {
-
-                    }
-                }
-            }
-        });
 
         //set up default path
-        $urlRouterProvider.when('/hi/:userkey',function($match){
-                var promise = user.validate();
-
-            //send autorization through to auth singleton
-            $q.resolve(they).then(function(){
-                auth.whoami(they);
-            });
+        $urlRouterProvider.when('/hi/:userkey',function($match,api){
+                var promise = apiProvider.$get($match)
+                    .then(function(){
+                        return '/home';
+                    });
+                promise.resolve();
 
         })
         $urlRouterProvider.otherwise('/home');
