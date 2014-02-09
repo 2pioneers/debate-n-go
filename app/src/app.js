@@ -9,7 +9,7 @@ var debate = angular.module('debate',[
 
 
 debate
-    .config(function($stateProvider, $urlRouterProvider, villasApiServiceProvider){
+    .config(function($stateProvider, $urlRouterProvider){
         //set up application with a user
 
         //set up default path
@@ -41,9 +41,9 @@ debate
             })
 
 })
-    .controller('appCtrl',function($rootScope,$http,$q, villasApiService){
+    .controller('appCtrl',function($rootScope){
         $rootScope.title = 'Eagle View South';
-        villasApiService.$get($q, $http);
+
     });
 
 
