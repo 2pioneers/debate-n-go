@@ -4,29 +4,9 @@
 var debate = angular.module('debate',[
     'ui.router',
     'debate.ctrl',
-    'debate.services'
+    'debate.services',
+    'debate.providers'
 ]);
-
-debate.provider('api',function($httpProvider){
-    var user,autherror;
-    return {
-        $get:function(){
-            var deferred = $q.defer();
-
-            deferred.promise = $http.get('http://api.evsvillas.com/index.php/login')
-                .success(function(data){
-                        user = data;
-                })
-                .error(function(data){
-                       autherror = data;
-                });
-
-            return deferred.promise; //chains the defer into the $http promise and is returned to the calling context
-        }
-
-    }
-
-});
 
 
 debate
@@ -34,14 +14,10 @@ debate
         //set up application with a user
 
         //set up default path
-        $urlRouterProvider.when('/hi/:userkey',function($match,api){
-                var promise = apiProvider.$get($match)
-                    .then(function(){
-                        return '/home';
-                    });
-                promise.resolve();
-
-        })
+        $urlRouterProvider.when('/hi/:userkey',function($match){
+                apiProvider.setuserkey($match);
+                
+        });
         $urlRouterProvider.otherwise('/home');
         $stateProvider
             .state('home',{
