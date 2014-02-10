@@ -28,13 +28,17 @@ debate
                     $rootScope.title = 'Eagle View South';
                     villasApi.userkey = $stateParams.userkey;
                     villasApi.appdata =forumdata;
-                    villasApi.nickname = "Batman";
+                    villasApi.userinfo = forumdata.data.userData;
+                    villasApi.posts = forumdata.data.votingTopic.messages;
+                    villasApi.users = forumdata.data.votingTopic.users;
+                    villasApi.topicID = forumdata.data.votingTopic.id;
+                    villasApi.postTopicOptions = forumdata.data.options;
                     $state.go('.home');
 
                 }
             })
             .state('app.home',{
-                url:'',
+
                 views:{
                     'header':{
                         templateUrl:'view/header.html',

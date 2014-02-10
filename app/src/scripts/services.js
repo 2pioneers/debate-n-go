@@ -19,8 +19,13 @@ angular.module('debate.services',[])
                     getOptionPostIDs: 'refreshOptionMessageKeys'
                 },
                 userkey: '',
-                 nickname:null,
-                 appdata:null
+                nickname:null,
+                appdata:null,
+                userinfo:null,
+                 posts:null,
+                 users:null,
+                 topicID:null,
+                 postTopicOptions:null
 
              }
 
