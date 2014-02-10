@@ -17,14 +17,17 @@ debate
                 url:'/home/:userkey',
                 templateUrl: 'view/home.html',
                 resolve:{
-                    data: function($stateParams, $http){
-                        $http.get('http://api.evsvillas.com/index.php/login/'+ $stateParams.userkey).success(function(result){
-                            return result;
-                        })
+                    forumdata : function($stateParams, $http){
+                        return $http.get('http://api.evsvillas.com/index.php/login/'+ $stateParams.userkey)
+
                     }
 
                 },
-                controller:'appCtrl'
+                controller: function($rootScope,forumdata,$state){
+                    $rootScope.title = 'Eagle View South';
+                    console.info('appCtrl init for ',forumdata);
+                    $state.go('.home');
+                }
             })
             .state('app.home',{
                 url:'',
