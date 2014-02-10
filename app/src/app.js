@@ -3,6 +3,7 @@
  */
 var debate = angular.module('debate',[
     'ui.router',
+    'ui.bootstrap',
     'debate.ctrl',
     'debate.services'
 ]);
@@ -23,17 +24,19 @@ debate
                     }
 
                 },
-                controller: function($rootScope,forumdata,$state){
+                controller: function($rootScope,forumdata,$state,$stateParams, villasApi){
                     $rootScope.title = 'Eagle View South';
-                    console.info('appCtrl init for ',forumdata);
+                    villasApi.userkey = $stateParams.userkey;
+                    villasApi.appdata =forumdata;
+                    villasApi.nickname = "Batman";
                     $state.go('.home');
+
                 }
             })
             .state('app.home',{
                 url:'',
-                controller: 'appCtrl',
                 views:{
-                    '@home.header':{
+                    'header':{
                         templateUrl:'view/header.html',
                         controller: 'headerCtrl'
                     },

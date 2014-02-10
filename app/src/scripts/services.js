@@ -18,31 +18,12 @@ angular.module('debate.services',[])
                     getAllMessages: 'refreshMessages/',
                     getOptionPostIDs: 'refreshOptionMessageKeys'
                 },
-                userkey: ''
+                userkey: '',
+                 nickname:null,
+                 appdata:null
 
-             },
-            authorize: function(userkey){
-               $http.get(api.host+api.login+userkey)
-                    .success(function(data){
-                        console.log(data);
-                       api.setuserkey(userkey);
-                    })
-                    .error()
-                    .then();
+             }
 
-            },
-            setuserkey : function(key){
-                api.userkey = key;
-            },
-            setappdata : function (data) {
-                appdata = data;
-            },
-            setnickname :function(name){
-                usernickname = name;
-            },
-            getnickname : function(){
-
-            }
         }
 
     })
