@@ -3,7 +3,7 @@
  */
 angular.module('debate.services',[])
 
-    .factory('userService',function(){
+    .factory('user',function(){
 
     })
     .factory('villasApi',function($http,$q){

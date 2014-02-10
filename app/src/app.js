@@ -10,18 +10,27 @@ var debate = angular.module('debate',[
 
 debate
     .config(function($stateProvider, $urlRouterProvider){
-        //set up application with a user
 
-        //set up default path
-        $urlRouterProvider.when('/hi/:userkey',function($match){
-                villasApiServiceProvider.setuserkey($match);
-        });
         $urlRouterProvider.otherwise('/home');
         $stateProvider
-            .state('home',{
-                url:'/home',
+            .state('app',{
+                url:'/home/:userkey',
+                templateUrl: 'view/home.html',
+                resolve:{
+                    data: function($stateParams, $http){
+                        $http.get('http://api.evsvillas.com/index.php/login/'+ $stateParams.userkey).success(function(result){
+                            return result;
+                        })
+                    }
+
+                },
+                controller:'appCtrl'
+            })
+            .state('app.home',{
+                url:'',
+                controller: 'appCtrl',
                 views:{
-                    'header':{
+                    '@home.header':{
                         templateUrl:'view/header.html',
                         controller: 'headerCtrl'
                     },
@@ -41,10 +50,6 @@ debate
             })
 
 })
-    .controller('appCtrl',function($rootScope){
-        $rootScope.title = 'Eagle View South';
-
-    });
 
 
 
