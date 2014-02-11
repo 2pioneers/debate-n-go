@@ -38,7 +38,7 @@ debate
                 }
             })
             .state('app.home',{
-
+                url:'',
                 views:{
                     'header':{
                         templateUrl:'view/header.html',
@@ -56,10 +56,15 @@ debate
                         templateUrl:'view/comingsoon.html',
                         controller: 'comingsoonCtrl'
                     }
+
                 }
             })
 
-})
+
+
+    })
+
+
 
 
 

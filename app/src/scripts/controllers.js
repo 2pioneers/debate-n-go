@@ -10,18 +10,28 @@
     .controller('infoCtrl',function($scope,villasApi){
 
     })
-    .controller('forumCtrl',function($scope,$log,$modal,villasApi){
+    .controller('forumCtrl',function($scope,$modal,$log,$state,$location, villasApi){
          if(villasApi.appdata && villasApi.posts){
              $scope.Posts = villasApi.posts;
          }
          $scope.getUserNickname = function(id){
              return villasApi.users
          }
+         $scope.post = function(){
+             $state.go('app.home.addpost');
+         }
 
-         $scope.newPost = function () {
+
+
+
+
+    })
+    .controller('comingsoonCtrl',function($scope,$modal,$log, villasApi){
+
+         $scope.open = function () {
 
              var modalInstance = $modal.open({
-                 templateUrl: 'view/modals/newpost.html',
+                 templateUrl: 'view/comingsoon.html',
                  controller: function($modalInstance){
                      $scope.cancel = function () {
                          $modalInstance.dismiss('cancel');
@@ -36,29 +46,12 @@
              });
          };
 
-
-    })
-    .controller('comingsoonCtrl',function($scope,$modal,$log, villasApi){
-
-         $scope.open = function () {
-
-             var modalInstance = $modal.open({
-                 templateUrl: 'view/comingsoon.html',
-                 controller: function($modalInstance){
-                     $scope.cancel = function () {
-                         $modalInstance.dismiss('cancel');
-                     };
-                 },
-             });
-
-             modalInstance.result.then(function (selectedItem) {
-                 $scope.selected = selectedItem;
-             }, function () {
-                 $log.info('Modal dismissed at: ' + new Date());
-             });
-         };
-
          if(!villasApi.appdata){
              $scope.open();
          }
-     });
+     })
+
+
+
+
+
