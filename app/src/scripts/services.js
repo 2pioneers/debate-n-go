@@ -25,7 +25,17 @@ angular.module('debate.services',[])
                  posts:null,
                  users:null,
                  topicID:null,
-                 postTopicOptions:null
+                 postTopicOptions:null,
+                 getPostReplies:function(postID){
+
+                 },
+                 sortPosts:function(sort){
+                     //if function, apply/return, if string, locate sort algorithm, apply/return
+
+                 },
+                 sendNewPost: function(){
+
+                 }
 
              }
 

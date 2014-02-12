@@ -13,13 +13,26 @@
     .controller('forumCtrl',function($scope,$modal,$log,$state,$location, villasApi){
          if(villasApi.appdata && villasApi.posts){
              $scope.Posts = villasApi.posts;
+             console.log($scope.Posts);
+             $scope.newPost = {
+                 user:{
+                   "$id":villasApi.userkey
+                 },
+                 title: "The tagline/title of the message",
+                 message: "The message",
+                 vote_options: [],
+                 vote_topic_id: ""
+             }
+             $scope.addPost= function(){
+                 $scope.Posts.append($scope.newPost);
+                 villasApi.sendNewPost($scope.newPost);
+             }
+
          }
          $scope.getUserNickname = function(id){
              return villasApi.users
          }
-         $scope.post = function(){
-             $state.go('app.home.addpost');
-         }
+
 
 
 
