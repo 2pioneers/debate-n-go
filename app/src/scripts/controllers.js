@@ -22,7 +22,7 @@
          if(villasApi.appdata && villasApi.posts){
              $scope.Posts = villasApi.posts;
              console.log($scope.Posts);
-
+         }
              var postModel = function(){
                  return {
                      user:{
@@ -56,26 +56,26 @@
                  });
 
              }
-             $scope.convertDate = function(thedate) {
-                 var month=new Array();
-                 month[0]="January";
-                 month[1]="February";
-                 month[2]="March";
-                 month[3]="April";
-                 month[4]="May";
-                 month[5]="June";
-                 month[6]="July";
-                 month[7]="August";
-                 month[8]="September";
-                 month[9]="October";
-                 month[10]="November";
-                 month[11]="December";
-                 var d = new Date(thedate.sec * 1000 + thedate.usec);
-                 return month[d.getMonth()] + ' ' + d.getDate();
-             }
 
 
+         $scope.convertDate = function(thedate) {
+             var month=new Array();
+             month[0]="January";
+             month[1]="February";
+             month[2]="March";
+             month[3]="April";
+             month[4]="May";
+             month[5]="June";
+             month[6]="July";
+             month[7]="August";
+             month[8]="September";
+             month[9]="October";
+             month[10]="November";
+             month[11]="December";
+             var d = new Date(thedate.sec * 1000 + thedate.usec);
+             return month[d.getMonth()] + ' ' + d.getDate();
          }
+
          $scope.getUserNickname = function(user){
              for(var i = 0; i < $scope.users.length; i++ ){
                  if($scope.users[i].id == (user['$id'] || user.id))
