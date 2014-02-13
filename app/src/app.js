@@ -10,10 +10,12 @@ var debate = angular.module('debate',[
 
 
 debate
-    .config(['$sceDelegateProvider', function($sceDelegateProvider) {
-        $sceDelegateProvider.resourceUrlWhitelist(['self', 'http://api.evsvillas.com/**']);
-
-    }])
+    .config(function($httpProvider){
+        $httpProvider.defaults.headers.common = {};
+        $httpProvider.defaults.headers.post = {};
+        $httpProvider.defaults.headers.put = {};
+        $httpProvider.defaults.headers.patch = {};
+    })
     .config(function($stateProvider, $urlRouterProvider){
 
 

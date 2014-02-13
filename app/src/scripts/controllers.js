@@ -18,7 +18,7 @@
              var postModel = function(){
                  return {
                      user:{
-                         "$id":villasApi.userId
+                         "id":villasApi.userId
                      },
                      title: "Title Your Post",
                      message: "Tell us all what you think.",
@@ -38,12 +38,8 @@
                  $scope.Posts.push(post);
                  $scope.newPost = postModel();
                  console.log($scope.Posts);
-                 var httpConfig = {
-                     headers: {
-                         'Content-Type': 'application/json'
-                     }
-                 };
-                 $http.post('http://api.evsvillas.com/index.php/leaveComment',post, httpConfig).success(function(data){
+
+                 $http.post('http://api.evsvillas.com/index.php/leaveComment',post).success(function(data){
                      console.log("success",data);
                  }).error(function(response){
                      console.log("error", response);
