@@ -62,17 +62,17 @@
                  month[9]="October";
                  month[10]="November";
                  month[11]="December";
-                 var d new Date(thedate.sec * 1000 + thedate.usec);
-                 return month[d.getMonth()] + ' ' + d.getDate;
+                 var d = new Date(thedate.sec * 1000 + thedate.usec);
+                 return month[d.getMonth()] + ' ' + d.getDate();
              }
 
 
          }
-         $scope.getUserNickname = function(post){
+         $scope.getUserNickname = function(user){
              console.log("checking!");
              for(var i = 0; i < $scope.users.length; i++ ){
                  console.log("checking user: ",$scope.users[i]);
-                 if($scope.users[i].id == (post.user['$id'] || post.user.id))
+                 if($scope.users[i].id == (user['$id'] || user.id))
                  return $scope.users[i].nickname;
              }
          }
