@@ -69,9 +69,7 @@
 
          }
          $scope.getUserNickname = function(user){
-             console.log("checking!");
              for(var i = 0; i < $scope.users.length; i++ ){
-                 console.log("checking user: ",$scope.users[i]);
                  if($scope.users[i].id == (user['$id'] || user.id))
                  return $scope.users[i].nickname;
              }
