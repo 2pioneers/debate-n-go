@@ -9,6 +9,14 @@
 
     .controller('infoCtrl',function($scope,villasApi){
 
+         angular.element('#roundabout').roundabout(
+             {
+                 autoplay:true,
+                 autoplayDuration:4000,
+                 duration: 1200,
+                 responsive:true
+             });
+
     })
     .controller('forumCtrl',function($scope,$modal,$log,$state,$location,$http, villasApi){
          if(villasApi.appdata && villasApi.posts){
