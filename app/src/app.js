@@ -10,7 +10,13 @@ var debate = angular.module('debate',[
 
 
 debate
+    .config(['$sceDelegateProvider', function($sceDelegateProvider) {
+        $sceDelegateProvider.resourceUrlWhitelist(['self', 'http://api.evsvillas.com/**']);
+
+    }])
     .config(function($stateProvider, $urlRouterProvider){
+
+
 
         $urlRouterProvider.otherwise('/home');
         $stateProvider
@@ -25,6 +31,7 @@ debate
 
                 },
                 controller: function($rootScope,forumdata,$state,$stateParams, villasApi){
+                    console.log(forumdata);
                     $rootScope.title = 'Eagle View South';
                     villasApi.userkey = $stateParams.userkey;
                     villasApi.appdata =forumdata;
@@ -33,6 +40,7 @@ debate
                     villasApi.users = forumdata.data.votingTopic.users;
                     villasApi.topicID = forumdata.data.votingTopic.id;
                     villasApi.postTopicOptions = forumdata.data.options;
+                    villasApi.userId = forumdata.data.userData.id;
                     $state.go('.home');
 
                 }

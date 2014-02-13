@@ -18,12 +18,12 @@
              var postModel = function(){
                  return {
                      user:{
-                         "id":villasApi.userkey
+                         "$id":villasApi.userId
                      },
                      title: "Title Your Post",
                      message: "Tell us all what you think.",
-                     vote_options: [],
-                     vote_topic_id: ""
+                     vote_topic_id:"000000000000000000000004",
+                     vote_options:["000000000000000000000005","000000000000000000000006","000000000000000000000007"]
                  }
              }
 
@@ -38,11 +38,22 @@
                  $scope.Posts.push(post);
                  $scope.newPost = postModel();
                  console.log($scope.Posts);
-                 $http.post('http://api.evsvillas.com/index.php/leaveComment',post).success(function(data){
-                     console.log(data);
+                 var httpConfig = {
+                     headers: {
+                         'Content-Type': 'application/json'
+                     }
+                 };
+                 $http.post('http://api.evsvillas.com/index.php/leaveComment',post, httpConfig).success(function(data){
+                     console.log("success",data);
+                 }).error(function(response){
+                     console.log("error", response);
                  });
 
              }
+             var convertDate = function(returnedDate) {
+                 return new Date(returnedDate.sec * 1000 + returnedDate.usec)
+             }
+
 
          }
          $scope.getUserNickname = function(id){

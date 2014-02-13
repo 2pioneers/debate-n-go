@@ -22,6 +22,7 @@ angular.module('debate.services',[])
                 nickname:null,
                 appdata:null,
                 userinfo:null,
+                 userId:null,
                  posts:null,
                  users:null,
                  topicID:null,
