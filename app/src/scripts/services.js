@@ -33,7 +33,10 @@ angular.module('debate.services',[])
                      //if function, apply/return, if string, locate sort algorithm, apply/return
 
                  },
-                 sendNewPost: function(){
+                 sendNewPost: function(post){
+                        $http.post(api.host+api.leaveCreateTopicPost,post).then(function(result){
+                            console.log(result);
+                        });
 
                  }
 

@@ -38,13 +38,13 @@
 
         <div class="panel panel-primary" id="topicid" ng-repeat="post in Posts">
             <div class="panel-heading">
-                <h3 class="panel-title">{{ post.id }}</h3>
+                <h3 class="panel-title">{{ post.title }}</h3>
             </div>
 
             <div class="panel-body">
                 <p>{{ post.message }}</p>
                 <blockquote>
-                    <small>Nickname | March 1, 2014 | Replies: <a class="badge" href="#topicidreplies"  data-toggle="collapse">5 <span class="caret"></span></a> </small>
+                    <small>Nickname | March 1, 2014 | Replies: <a class="badge" href="#topicidreplies"  data-toggle="collapse">{{ post.children.length }} <span class="caret"></span></a> </small>
                 </blockquote>
             </div>
                 <div class="panel-footer collapse" id="topicidreplies">
@@ -81,10 +81,10 @@
                 <form role="form">
                     <div class="form-group">
                         <label for="postTitle">Post Title</label>
-                        <input type="text" class="form-control" id="postTitle" placeholder="Post Title">
+                        <input type="text" class="form-control" id="postTitle" placeholder="Post Title" ng-model="newPost.title">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" rows="5" ng-model="Posts"></textarea>
+                        <textarea class="form-control" rows="5" ng-model="newPost.message"></textarea>
                     </div>
                     <div class="form-group">
                         <p>Indicate which options your post relates to by using the toggle buttons below</p>
@@ -104,7 +104,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" ng-click="addPost()">Add Post</button>
+                <button type="button" class="btn btn-primary" ng-click="addPost()" data-dismiss="modal">Add Post</button>
             </div>
         </div>
     </div>

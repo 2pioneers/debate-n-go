@@ -10,34 +10,44 @@
     .controller('infoCtrl',function($scope,villasApi){
 
     })
-    .controller('forumCtrl',function($scope,$modal,$log,$state,$location, villasApi){
+    .controller('forumCtrl',function($scope,$modal,$log,$state,$location,$http, villasApi){
          if(villasApi.appdata && villasApi.posts){
              $scope.Posts = villasApi.posts;
              console.log($scope.Posts);
-             $scope.newPost = {
-                 user:{
-                   "$id":villasApi.userkey
-                 },
-                 title: "The tagline/title of the message",
-                 message: "The message",
-                 vote_options: [],
-                 vote_topic_id: ""
+
+             var postModel = function(){
+                 return {
+                     user:{
+                         "id":villasApi.userkey
+                     },
+                     title: "Title Your Post",
+                     message: "Tell us all what you think.",
+                     vote_options: [],
+                     vote_topic_id: ""
+                 }
              }
-             $scope.addPost= function(){
-                 $scope.Posts.append($scope.newPost);
-                 villasApi.sendNewPost($scope.newPost);
+
+
+             $scope.newPost = postModel();
+             $scope.addPost = function(){
+                 var newPost = $scope.newPost;
+                 if(!newPost){
+                     return;
+                 }
+                 var post = angular.extend({},new postModel(),newPost);
+                 $scope.Posts.push(post);
+                 $scope.newPost = postModel();
+                 console.log($scope.Posts);
+                 $http.post('http://api.evsvillas.com/index.php/leaveComment',post).success(function(data){
+                     console.log(data);
+                 });
+
              }
 
          }
          $scope.getUserNickname = function(id){
              return villasApi.users
          }
-
-
-
-
-
-
     })
     .controller('comingsoonCtrl',function($scope,$modal,$log, villasApi){
 
