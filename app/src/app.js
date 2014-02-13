@@ -43,6 +43,7 @@ debate
                     villasApi.topicID = forumdata.data.votingTopic.id;
                     villasApi.postTopicOptions = forumdata.data.options;
                     villasApi.userId = forumdata.data.userData.id;
+
                     $state.go('.home');
 
                 }

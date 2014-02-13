@@ -44,7 +44,7 @@
             <div class="panel-body">
                 <p>{{ post.message }}</p>
                 <blockquote>
-                    <small>Nickname | March 1, 2014 | Replies: <a class="badge" href="#topicidreplies"  data-toggle="collapse">{{ post.children.length }} <span class="caret"></span></a> </small>
+                    <small><span ng-bind="getUserNickname(post)"></span> | March 1, 2014 | Replies: <a class="badge" href="#topicidreplies"  data-toggle="collapse">{{ post.children.length }} <span class="caret"></span></a> </small>
                 </blockquote>
             </div>
                 <div class="panel-footer collapse" id="topicidreplies">
@@ -55,17 +55,6 @@
 
 
         </div>
-
-
-        <!-- pagination -->
-        <ul class="pagination">
-            <li class="disabled"><a href="#">&laquo;</a></li>
-            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-        </ul>
 
 </div>
 
