@@ -1,5 +1,9 @@
 angular.module('debate.directives',[])
 
-    .directive('topic',function($scope){
+    .directive('reply',function($scope){
+        return {
+            restrict: 'E',
+
+        }
 
     })
