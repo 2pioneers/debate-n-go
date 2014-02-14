@@ -3,8 +3,17 @@
  */
  angular.module('debate.ctrl',[])
 
-    .controller('headerCtrl',function($scope,$http,villasApi){
-        $scope.nickname = villasApi.userinfo.nickname;
+    .controller('headerCtrl',function($scope,$http,villasApi, $cookies){
+       if(villasApi.userinfo.nickname){
+           $scope.nickname = villasApi.userinfo.nickname;
+           $cookies.nickname = villasApi.userinfo.nickname;
+           if(villasApi.userkey) $cookies.userkey = villasApi.userkey;
+       } else if ($cookies.nickname){
+           $scope.nickname = $cookies.nickname;
+         }
+         angular.element('.dropdown-menu').find('form').click(function (e) {
+             e.stopPropagation();
+         });
 
          $scope.changeNickname = function(){
 
@@ -13,7 +22,7 @@
                   new_username:$scope.nickname
               }
              $http.post('http://api.evsvillas.com/index.php/updateUsername',nickname)
-                 .error()
+
          }
     })
 
@@ -29,6 +38,7 @@
 
     })
     .controller('forumCtrl',function($scope,$modal,$log,$state,$location,$http, villasApi){
+         $scope.isCollapsed = true;
          if(villasApi.appdata && villasApi.posts){
              $scope.Posts = villasApi.posts;
          }
@@ -46,7 +56,7 @@
 
 
              $scope.users = villasApi.users;
-
+                console.log($scope.users);
 
              $scope.newPost = postModel();
              $scope.addPost = function(){
@@ -65,28 +75,18 @@
              }
 
 
-         $scope.convertDate = function(thedate) {
-             var month=new Array();
-             month[0]="January";
-             month[1]="February";
-             month[2]="March";
-             month[3]="April";
-             month[4]="May";
-             month[5]="June";
-             month[6]="July";
-             month[7]="August";
-             month[8]="September";
-             month[9]="October";
-             month[10]="November";
-             month[11]="December";
-             var d = new Date(thedate.sec * 1000 + thedate.usec);
-             return month[d.getMonth()] + ' ' + d.getDate();
-         }
-
          $scope.getUserNickname = function(user){
              for(var i = 0; i < $scope.users.length; i++ ){
                  if($scope.users[i].id == (user['$id'] || user.id))
                  return $scope.users[i].nickname;
+             }
+         }
+
+         $scope.predicateName = function(predicate){
+             if(!predicate || predicate == 'postDate.sec'){
+                 return "Post Date";
+             } else {
+                 return '# Comments';
              }
          }
     })
@@ -108,7 +108,7 @@
 
          }
      })
-    .controller('comingsoonCtrl',function($scope,$modal,$log, villasApi){
+    .controller('comingsoonCtrl',function($scope,$modal,$log,$cookies,$http, villasApi){
 
          $scope.open = function () {
 
