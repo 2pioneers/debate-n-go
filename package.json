@@ -1,6 +1,6 @@
 {
-    "name": "debate-n-go",
-    "version": "0.2.0",
+    "name": "evsvillas",
+    "version": "1.0.0",
     "description": "An app for collecting user feedback.  Pre-polling",
     "main": "app/src",
     "devDependencies": {
