@@ -3,11 +3,8 @@
     <div class="navbar-header navbar-brand">
         Three Year Strategic Options Forum
     </div>
-    <ul class="nav navbar-nav nav-pills">
-        <li class="active"><a href="#">Option A</a></li>
-        <li><a href="#">Option B</a></li>
-        <li><a href="#">Option C</a></li>
-    </ul>
+
+    <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#newtopic">New Post</button>
     <form class="navbar-form navbar-right" role="search">
 
         <div class="form-group">
@@ -35,37 +32,71 @@
 
 <div class="row"><!-- forum start -->
 
-        <div class="panel panel-primary" id="topicid">
+        <div class="panel panel-primary" id="topicid" ng-repeat="post in Posts">
             <div class="panel-heading">
-                <h3 class="panel-title">I like Option A</h3>
+                <h3 class="panel-title">{{ post.title }}</h3>
             </div>
 
             <div class="panel-body">
-                <p>Here's why I think you should vote...</p>
+                <p>{{ post.message }}</p>
                 <blockquote>
-                    <small>Nickname | March 1, 2014 | Replies: <a class="badge" href="#topicidreplies"  data-toggle="collapse">5 <span class="caret"></span></a> </small>
+                    <small><span ng-bind="getUserNickname(post.user)"></span> | <span ng-bind="convertDate(post.postDate)"></span ></span>, 2014 | Replies: <a class="badge" href="#responses-{{post.id}}"  data-toggle="collapse">{{ post.children.length }} <span class="caret"></span></a></small>
                 </blockquote>
             </div>
-                <div class="panel-footer collapse" id="topicidreplies">
-                    <div class="reply">
-                        <p>I totally Agree</p>
+
+
+
+                <div class="panel-footer collapse topicidreplies" id="responses-{{post.id}}" >
+                    <div ng-repeat="reply in post.children">
+                        <div class="reply">
+                        <p>{{ reply.response }}</p>
+                    </div>
+                </div>
+                    <div  id="reply-{{post.id}}">
+
+                        <form ng-submit="submit()" ng-controller="replyCtrl" >
+                            <textarea class="form-control" rows="3" ng-model="response"> </textarea>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+
+
                     </div>
                 </div>
 
 
         </div>
 
-
-        <!-- pagination -->
-        <ul class="pagination">
-            <li class="disabled"><a href="#">&laquo;</a></li>
-            <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-        </ul>
-
-
-
 </div>
+
+<!-- Post Modal -->
+<div class="modal fade" id="newtopic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">Create new Post</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="postTitle">Post Title</label>
+                        <input type="text" class="form-control" id="postTitle" placeholder="Post Title" ng-model="newPost.title">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="5" ng-model="newPost.message"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <p>Indicate which options your post relates to by using the toggle buttons below</p>
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" ng-click="addPost()" data-dismiss="modal">Add Post</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Reply Modal -->

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
-<html ng-app="debate" ng-controller="appCtrl">
+<html ng-app="debate">
 <head>
     <title ng-bind="title"></title>
 
@@ -13,48 +13,21 @@
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 </head>
-<body >
-<div ui-view="header"></div>
-
-<div class="container">
-
-
-    <div ui-view="info"></div>
-    <div ui-view="forum"></div>
-</div>
-<div class="modal" id="comingsoon">
-    <div class="modal-dialog" >
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>Welcome | <small>Villas at Eagle View South</small></h3>
-            </div>
-            <div class="modal-body">
-                <p> Welcome to the initial Villas at Eagle View South website.  It will continue to evolve in the months ahead to serve the 56 lot owners.</p>
-                <p>Initial Features of this site will only be available to lot owners. Click the button below if you are a resident and did not receive your login instructions email.<p></p>
-            </div>
-            <div class="modal-footer">
-                <div class="alert alert-warning">Lot Owners Only <span class="glyphicon glyphicon-chevron-right"></span> <button disabled type="button" class="btn btn-primary"><span class="glyphicon glyphicon-home"></span>I need to login</button></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="libs/jquery/jquery.min.js"></script>
-<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+<body>
+<div ui-view></div>
+<script src="libs/jquery/jquery.js"></script>
+<script src="libs/roundabout/jquery.roundabout.min.js"></script>
+<script src="libs/bootstrap/dist/js/bootstrap.js"></script>
 <script src="libs/angular/angular.js"></script>
 <script src="libs/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="libs/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="libs/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="app.js"></script>
 
-<script src="scripts/appCtrl.js"></script>
+<script src="scripts/controllers.js"></script>
 <script class="scripts/directives.js"></script>
-<script>
-    $('#comingsoon').modal({
-        backdrop:'static',
-        keyboard:false,
-        show:true
+<script src="scripts/services.js"></script>
 
-    });
-</script>
 </body>
 
 </html>
