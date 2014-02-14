@@ -3,8 +3,15 @@
  */
  angular.module('debate.ctrl',[])
 
-    .controller('headerCtrl',function($scope,$http,villasApi){
-        $scope.nickname = villasApi.userinfo.nickname;
+    .controller('headerCtrl',function($scope,$http,villasApi, $cookies){
+       if(villasApi.userinfo.nickname){
+           $scope.nickname = villasApi.userinfo.nickname;
+           $cookies.nickname = villasApi.userinfo.nickname;
+           if(villasApi.userkey) $cookies.userkey = villasApi.userkey;
+       } else if ($cookies.nickname){
+           $scope.nickname = $cookies.nickname;
+         }
+
 
          $scope.changeNickname = function(){
 
@@ -99,7 +106,7 @@
 
          }
      })
-    .controller('comingsoonCtrl',function($scope,$modal,$log, villasApi){
+    .controller('comingsoonCtrl',function($scope,$modal,$log,$cookies,$http, villasApi){
 
          $scope.open = function () {
 

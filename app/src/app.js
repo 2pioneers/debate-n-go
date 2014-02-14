@@ -2,6 +2,7 @@
  * Created by chief on 1/18/14.
  */
 var debate = angular.module('debate',[
+    'ngCookies',
     'ui.router',
     'ui.bootstrap',
     'debate.ctrl',
@@ -20,7 +21,7 @@ debate
 
         $urlRouterProvider.when('/hi/:userkey',function($match, $http, villasApi, $state){
             return $http.get('http://api.evsvillas.com/index.php/login/'+ $match.userkey).success(function(result){
-                console.log(result);
+
                 villasApi.userkey = $match.userkey;
                 villasApi.appdata = result;
                 villasApi.userinfo = result.userData;
@@ -29,8 +30,6 @@ debate
                 villasApi.topicID = result.votingTopic.id;
                 villasApi.postTopicOptions = result.votingTopic.options;
                 villasApi.userId = result.userData.id;
-                console.log("villasApi",villasApi);
-
             }).then(function(){
                 $state.go('app');
             });
@@ -44,6 +43,25 @@ debate
                 templateUrl: 'view/home.html',
                 controller:function($state){
                     $state.go('.home');
+                },
+                resolve:{
+                    user:function($cookies, $http,villasApi){
+                        if(!villasApi.userkey && $cookies.userkey){
+                           return $http.get('http://api.evsvillas.com/index.php/login/'+ $cookies.userkey).success(function(result){
+
+                                villasApi.userkey = $cookies.userkey;
+                                villasApi.appdata = result;
+                                villasApi.userinfo = result.userData;
+                                villasApi.posts = result.votingTopic.messages;
+                                villasApi.users = result.votingTopic.users;
+                                villasApi.topicID = result.votingTopic.id;
+                                villasApi.postTopicOptions = result.votingTopic.options;
+                                villasApi.userId = result.userData.id;
+                            });
+                        } else {
+                            return;
+                        }
+                    }
                 }
             })
             .state('app.home',{
