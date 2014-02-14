@@ -77,7 +77,7 @@
 
          $scope.getUserNickname = function(user){
              for(var i = 0; i < $scope.users.length; i++ ){
-                 if($scope.users[i].id == (user['$id'] || user.id))
+                 if($scope.users[i].id === (user['$id'] || user.id))
                  return $scope.users[i].nickname;
              }
          }
