@@ -18,34 +18,32 @@ debate
     })
     .config(function($stateProvider, $urlRouterProvider){
 
+        $urlRouterProvider.when('/hi/:userkey',function($match, $http, villasApi, $state){
+            return $http.get('http://api.evsvillas.com/index.php/login/'+ $match.userkey).success(function(result){
+                console.log(result);
+                villasApi.userkey = $match.userkey;
+                villasApi.appdata = result;
+                villasApi.userinfo = result.userData;
+                villasApi.posts = result.votingTopic.messages;
+                villasApi.users = result.votingTopic.users;
+                villasApi.topicID = result.votingTopic.id;
+                villasApi.postTopicOptions = result.votingTopic.options;
+                villasApi.userId = result.userData.id;
+                console.log("villasApi",villasApi);
 
+            }).then(function(){
+                $state.go('app');
+            });
+
+        })
 
         $urlRouterProvider.otherwise('/home');
         $stateProvider
             .state('app',{
-                url:'/home/:userkey',
+                url:'/home',
                 templateUrl: 'view/home.html',
-                resolve:{
-                    forumdata : function($stateParams, $http){
-                        return $http.get('http://api.evsvillas.com/index.php/login/'+ $stateParams.userkey)
-
-                    }
-
-                },
-                controller: function($rootScope,forumdata,$state,$stateParams, villasApi){
-                    console.log(forumdata);
-                    $rootScope.title = 'Eagle View South';
-                    villasApi.userkey = $stateParams.userkey;
-                    villasApi.appdata =forumdata;
-                    villasApi.userinfo = forumdata.data.userData;
-                    villasApi.posts = forumdata.data.votingTopic.messages;
-                    villasApi.users = forumdata.data.votingTopic.users;
-                    villasApi.topicID = forumdata.data.votingTopic.id;
-                    villasApi.postTopicOptions = forumdata.data.options;
-                    villasApi.userId = forumdata.data.userData.id;
-
+                controller:function($state){
                     $state.go('.home');
-
                 }
             })
             .state('app.home',{

@@ -29,6 +29,7 @@
 
     })
     .controller('forumCtrl',function($scope,$modal,$log,$state,$location,$http, villasApi){
+         $scope.isCollapsed = true;
          if(villasApi.appdata && villasApi.posts){
              $scope.Posts = villasApi.posts;
          }
