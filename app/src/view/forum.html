@@ -44,22 +44,26 @@
             <div class="panel-body">
                 <p>{{ post.message }}</p>
                 <blockquote>
-                    <small><span ng-bind="getUserNickname(post.user)"></span> | <span ng-bind="convertDate(post.postDate)"></span ></span>, 2014 | Replies: <a class="badge" href="#responses-{{post.id}}"  data-toggle="collapse">{{ post.children.length }} <span class="caret"></span></a> <button class="btn btn-sm" data-toggle="collapse" data-target="#reply-{{post.id}}">Post Reply</button> </small>
+                    <small><span ng-bind="getUserNickname(post.user)"></span> | <span ng-bind="convertDate(post.postDate)"></span ></span>, 2014 | Replies: <a class="badge" href="#responses-{{post.id}}"  data-toggle="collapse">{{ post.children.length }} <span class="caret"></span></a></small>
                 </blockquote>
             </div>
 
-                <div class="collapse well" id="reply-{{post.id}}">
 
-                        <form >
-                            <textarea class="form-control" rows="3" > {{ post.newResponse }}</textarea>
+
+                <div class="panel-footer collapse topicidreplies" id="responses-{{post.id}}" >
+                    <div ng-repeat="reply in post.children">
+                        <div class="reply">
+                        <p>{{ reply.response }}</p>
+                    </div>
+                </div>
+                    <div  id="reply-{{post.id}}">
+
+                        <form ng-submit="submit()" ng-controller="replyCtrl" >
+                            <textarea class="form-control" rows="3" ng-model="response"> </textarea>
+                            <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
 
-                    <button class="btn btn-primary" ng-click="addReply(post.id)">Submit</button>
-                </div>
 
-                <div class="panel-footer collapse topicidreplies" id="responses-{{post.id}}" ng-repeat="reply in post.children">
-                    <div class="reply">
-                        <p>{{ reply.response }}</p>
                     </div>
                 </div>
 

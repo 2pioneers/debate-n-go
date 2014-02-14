@@ -3,8 +3,23 @@
  */
  angular.module('debate.ctrl',[])
 
-    .controller('headerCtrl',function($scope,villasApi){
+    .controller('headerCtrl',function($scope,$http,villasApi){
         $scope.nickname = villasApi.userinfo.nickname;
+
+         $scope.changeNickname = function(){
+
+              var nickname = {
+                  user_id: villasApi.userId,
+                  new_username:$scope.nickname
+              }
+             $http.post('http://api.evsvillas.com/index.php/updateUsername',nickname)
+                 .success(function(data){
+                     console.log('success',data);
+                 })
+                 .error(function(data){
+                     console.log('success',data);
+                 })
+         }
     })
 
     .controller('infoCtrl',function($scope,villasApi){
@@ -34,6 +49,7 @@
                      vote_options:["000000000000000000000005","000000000000000000000006","000000000000000000000007"]
                  }
              }
+
 
              $scope.users = villasApi.users;
 
@@ -83,6 +99,30 @@
              }
          }
     })
+
+     .controller('replyCtrl',function($scope, villasApi, $http){
+            var replies = $scope.post.children;
+            var parentId = $scope.post.id;
+         $scope.submit = function(){
+                console.log("response",$scope.response);
+                var responseObj = {
+                    user:{
+                        'id':villasApi.userId
+                    },
+                    response:$scope.response,
+                    parent_id:parentId
+                }
+             replies.push(responseObj);
+             $scope.response  = "",
+             $http.post('http://api.evsvillas.com/index.php/leaveReply',responseObj)
+                 .success(function(data){
+                     console.log("success",data);
+                 })
+                 .error(function(data){
+                     console.log("error", data);
+                 });
+         }
+     })
     .controller('comingsoonCtrl',function($scope,$modal,$log, villasApi){
 
          $scope.open = function () {
