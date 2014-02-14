@@ -11,7 +11,9 @@
        } else if ($cookies.nickname){
            $scope.nickname = $cookies.nickname;
          }
-
+         angular.element('.dropdown-menu').find('form').click(function (e) {
+             e.stopPropagation();
+         });
 
          $scope.changeNickname = function(){
 
@@ -20,7 +22,7 @@
                   new_username:$scope.nickname
               }
              $http.post('http://api.evsvillas.com/index.php/updateUsername',nickname)
-                 .error()
+
          }
     })
 
@@ -54,7 +56,7 @@
 
 
              $scope.users = villasApi.users;
-
+                console.log($scope.users);
 
              $scope.newPost = postModel();
              $scope.addPost = function(){
