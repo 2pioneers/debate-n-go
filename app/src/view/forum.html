@@ -8,17 +8,18 @@
     <form class="navbar-form navbar-right" role="search">
 
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sort By: {{'Newest'}} <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sort By: {{ predicateName(predicate) }}<b class="caret"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="#">Oldest</a></li>
-                <li><a href="#">Most Comments</a></li>
-                <li><a href="#">Least Comments</a></li>
+                <li><a href="" ng-click="predicate = 'postDate.sec'; reverse= false">Oldest</a></li>
+                <li><a href="" ng-click="predicate = 'postDate.sec'; reverse= true">Newest</a></li>
+                <li><a href="" ng-click="predicate = 'children'; reverse = true">Most Comments</a></li>
+                <li><a href="" ng-click="predicate = 'children'; reverse = false">Least Comments</a></li>
                 <li class="divider"></li>
                 <li><a href="#">Mine first</a></li>
             </ul>
@@ -32,7 +33,7 @@
 
 <div class="row"><!-- forum start -->
 
-        <div class="panel panel-primary" id="topicid" ng-repeat="post in Posts">
+        <div class="panel panel-primary" id="topicid" ng-repeat="post in Posts | orderBy:predicate:reverse | filter:searchText">
             <div class="panel-heading">
                 <h3 class="panel-title">{{ post.title }}</h3>
             </div>
@@ -40,7 +41,7 @@
             <div class="panel-body">
                 <p>{{ post.message }}</p>
                 <blockquote>
-                    <small><span ng-bind="getUserNickname(post.user)"></span> | <span ng-bind="convertDate(post.postDate)"></span ></span>, 2014 | Replies: <a class="badge" href="#responses-{{post.id}}"  data-toggle="collapse">{{ post.children.length }} <span class="caret"></span></a></small>
+                    <small><span ng-bind="getUserNickname(post.user)"></span> | <span >{{ post.postDate.sec*1000 + post.postDate.usec | date:'MMMM d, yyyy' }}</span > | Replies: <a class="badge" href="#responses-{{post.id}}"  data-toggle="collapse">{{ post.children.length }} <span class="caret"></span></a></small>
                 </blockquote>
             </div>
 
