@@ -65,10 +65,6 @@
              }
 
 
-         $scope.convertDate = function(thedate) {
-             return thedate.sec * 1000 + thedate.usec;
-         }
-
          $scope.getUserNickname = function(user){
              for(var i = 0; i < $scope.users.length; i++ ){
                  if($scope.users[i].id == (user['$id'] || user.id))
@@ -77,7 +73,7 @@
          }
 
          $scope.predicateName = function(predicate){
-             if(predicate == 'postDate.sec'){
+             if(!predicate || predicate == 'postDate.sec'){
                  return "Post Date";
              } else {
                  return '# Comments';
