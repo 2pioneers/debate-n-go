@@ -13,21 +13,16 @@
                   new_username:$scope.nickname
               }
              $http.post('http://api.evsvillas.com/index.php/updateUsername',nickname)
-                 .success(function(data){
-                     console.log('success',data);
-                 })
-                 .error(function(data){
-                     console.log('success',data);
-                 })
+                 .error()
          }
     })
 
-    .controller('infoCtrl',function($scope,villasApi){
+    .controller('infoCtrl',function(){
 
          angular.element('#roundabout').roundabout(
              {
                  autoplay:true,
-                 autoplayDuration:4000,
+                 autoplayDuration:9000,
                  duration: 1200,
                  responsive:true
              });
@@ -36,7 +31,6 @@
     .controller('forumCtrl',function($scope,$modal,$log,$state,$location,$http, villasApi){
          if(villasApi.appdata && villasApi.posts){
              $scope.Posts = villasApi.posts;
-             console.log($scope.Posts);
          }
              var postModel = function(){
                  return {
@@ -63,12 +57,9 @@
                  var post = angular.extend({},new postModel(),newPost);
                  $scope.Posts.push(post);
                  $scope.newPost = postModel();
-                 console.log($scope.Posts);
 
-                 $http.post('http://api.evsvillas.com/index.php/leaveComment',post).success(function(data){
-                     console.log("success",data);
-                 }).error(function(response){
-                     console.log("error", response);
+                 $http.post('http://api.evsvillas.com/index.php/leaveComment',post).error(function(response){
+
                  });
 
              }
@@ -104,7 +95,6 @@
             var replies = $scope.post.children;
             var parentId = $scope.post.id;
          $scope.submit = function(){
-                console.log("response",$scope.response);
                 var responseObj = {
                     user:{
                         'id':villasApi.userId
@@ -115,12 +105,7 @@
              replies.push(responseObj);
              $scope.response  = "",
              $http.post('http://api.evsvillas.com/index.php/leaveReply',responseObj)
-                 .success(function(data){
-                     console.log("success",data);
-                 })
-                 .error(function(data){
-                     console.log("error", data);
-                 });
+
          }
      })
     .controller('comingsoonCtrl',function($scope,$modal,$log, villasApi){
