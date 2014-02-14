@@ -48,9 +48,11 @@
 
 
                 <div class="panel-footer topicidreplies" collapse="isCollapsed" >
-                    <div ng-repeat="reply in post.children">
-                        <div class="reply">
-                        <p>{{ reply.response }}</p>
+                    <div ng-repeat="reply in post.children" class="reply">
+                        <div class="panel panel-default">
+                            <div class="panel-body"><p>{{ reply.response }}</p></div>
+                            <div class="panel-footer bg-info"><span >Nickname</span></div>
+
                     </div>
                 </div>
                     <div  id="reply-{{post.id}}">
