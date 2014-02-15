@@ -24,6 +24,7 @@
              $http.post('http://api.evsvillas.com/index.php/updateUsername',nickname)
 
          }
+
     })
 
     .controller('infoCtrl',function(){
@@ -127,6 +128,10 @@
                  $log.info('Modal dismissed at: ' + new Date());
              });
          };
+
+         $scope.launchEmail = function(){
+
+         }
 
          if(!villasApi.appdata){
              $scope.open();
