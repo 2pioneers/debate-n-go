@@ -30,6 +30,7 @@ debate
                 villasApi.topicID = result.votingTopic.id;
                 villasApi.postTopicOptions = result.votingTopic.options;
                 villasApi.userId = result.userData.id;
+                villasApi.voteOptions = result.votingTopic.options
             }).then(function(){
                 $state.go('app');
             });
