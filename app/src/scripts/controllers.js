@@ -49,8 +49,8 @@
                      },
                      title: "Title Your Post",
                      message: "Tell us all what you think.",
-                     vote_topic_id:"000000000000000000000004",
-                     vote_options:["000000000000000000000005","000000000000000000000006","000000000000000000000007"]
+                     vote_topic_id:villasApi.topicID,
+                     vote_options: [villasApi.voteOptions[0].id,villasApi.voteOptions[1].id,villasApi.voteOptions[2],id]
                  }
              }
 

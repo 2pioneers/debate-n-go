@@ -27,6 +27,7 @@ angular.module('debate.services',[])
                  users:null,
                  topicID:null,
                  postTopicOptions:null,
+                 voteOptions:null,
                  getPostReplies:function(postID){
 
                  },
