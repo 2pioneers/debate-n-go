@@ -24,6 +24,7 @@
              $http.post('http://api.evsvillas.com/index.php/updateUsername',nickname)
 
          }
+
     })
 
     .controller('infoCtrl',function(){
@@ -77,7 +78,7 @@
 
          $scope.getUserNickname = function(user){
              for(var i = 0; i < $scope.users.length; i++ ){
-                 if($scope.users[i].id == (user['$id'] || user.id))
+                 if($scope.users[i].id === (user['$id'] || user.id))
                  return $scope.users[i].nickname;
              }
          }
@@ -127,6 +128,10 @@
                  $log.info('Modal dismissed at: ' + new Date());
              });
          };
+
+         $scope.launchEmail = function(){
+
+         }
 
          if(!villasApi.appdata){
              $scope.open();
