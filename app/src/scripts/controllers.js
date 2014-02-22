@@ -21,7 +21,7 @@
                   user_id: villasApi.userId,
                   new_username:$scope.nickname
               }
-             $http.post('http://apidev.evsvillas.com/index.php/updateUsername',nickname)
+             $http.post('http://api.evsvillas.com/index.php/updateUsername',nickname)
 
          }
 
@@ -70,7 +70,7 @@
                  $scope.Posts.push(post);
                  $scope.newPost = postModel();
 
-                 $http.post('http://apidev.evsvillas.com/index.php/leaveComment',post).error(function(response){
+                 $http.post('http://api.evsvillas.com/index.php/leaveComment',post).error(function(response){
 
                  });
 
@@ -106,7 +106,7 @@
                 }
              replies.push(responseObj);
              $scope.response  = "",
-             $http.post('http://apidev.evsvillas.com/index.php/leaveReply',responseObj)
+             $http.post('http://api.evsvillas.com/index.php/leaveReply',responseObj)
 
          }
      })
