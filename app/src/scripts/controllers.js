@@ -51,7 +51,8 @@
                      title: "Title Your Post",
                      message: "Tell us all what you think.",
                      vote_topic_id:villasApi.topicID,
-                     vote_options: ['000000000000000000000001',villasApi.postTopicOptions[1].id,villasApi.postTopicOptions[2].id]
+                     vote_options: ['000000000000000000000001',villasApi.postTopicOptions[1].id,villasApi.postTopicOptions[2].id],
+                     thedate: new Date()
                  }
              }
 

@@ -41,7 +41,7 @@
             <div class="panel-body">
                 <p>{{ post.message }}</p>
                 <blockquote>
-                    <small><span ng-bind="getUserNickname(post.user)"></span> | <span >{{ post.postDate.sec*1000 + post.postDate.usec | date:'MMMM d, yyyy' }}</span > | Replies: <button class="btn btn-sm" ng-click="isCollapsed = !isCollapsed"   >{{ post.children.length }} <span class="caret"></span></button></small>
+                    <small><span ng-bind="getUserNickname(post.user)"></span> | <span ng-if="post.postDate">{{ post.postDate.sec*1000 + post.postDate.usec | date:'MMMM d, yyyy' }}</span ><span ng-if="!post.postDate">{{ post.thedate | date:'MMMM d, yyyy' }}</span> | Replies: <button class="btn btn-sm" ng-click="isCollapsed = !isCollapsed"   >{{ post.children.length }} <span class="caret"></span></button></small>
                 </blockquote>
             </div>
 
