@@ -1,9 +1,15 @@
 {
   "name": "debate-ngo",
   "version": "0.2.0",
-  "dependencies": {},
+  "dependencies": {
+    "angular": "~1.2.13",
+    "bootstrap": "~3.1.1",
+    "angular-bootstrap": "~0.10.0",
+    "roundabout": "~2.4.2",
+    "angular-google-analytics": "~0.0.1"
+  },
   "devDependencies": {},
   "resolutions": {
-    "angular": ">=1"
+    "angular": "~1.2.13"
   }
 }
