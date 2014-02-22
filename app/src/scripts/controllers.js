@@ -21,7 +21,7 @@
                   user_id: villasApi.userId,
                   new_username:$scope.nickname
               }
-             $http.post('http://api.evsvillas.com/index.php/updateUsername',nickname)
+             $http.post('http://apidev.evsvillas.com/index.php/updateUsername',nickname)
 
          }
 
@@ -51,7 +51,8 @@
                      title: "Title Your Post",
                      message: "Tell us all what you think.",
                      vote_topic_id:villasApi.topicID,
-                     vote_options: ['000000000000000000000001',villasApi.postTopicOptions[1].id,villasApi.postTopicOptions[2].id]
+                     vote_options: ['000000000000000000000001',villasApi.postTopicOptions[1].id,villasApi.postTopicOptions[2].id],
+                     thedate: new Date()
                  }
              }
 
@@ -69,7 +70,7 @@
                  $scope.Posts.push(post);
                  $scope.newPost = postModel();
 
-                 $http.post('http://api.evsvillas.com/index.php/leaveComment',post).error(function(response){
+                 $http.post('http://apidev.evsvillas.com/index.php/leaveComment',post).error(function(response){
 
                  });
 
@@ -105,7 +106,7 @@
                 }
              replies.push(responseObj);
              $scope.response  = "",
-             $http.post('http://api.evsvillas.com/index.php/leaveReply',responseObj)
+             $http.post('http://apidev.evsvillas.com/index.php/leaveReply',responseObj)
 
          }
      })

@@ -6,11 +6,24 @@ var debate = angular.module('debate',[
     'ui.router',
     'ui.bootstrap',
     'debate.ctrl',
-    'debate.services'
+    'debate.services',
+    'angular-google-analytics'
 ]);
 
-
 debate
+    .config(function(AnalyticsProvider){
+    // initial configuration
+    AnalyticsProvider.setAccount('UA-47169705-1');
+
+    // track all routes (or not)
+    AnalyticsProvider.trackPages(true);
+
+    // Ignore first page view... helpful when using hashes and whenever your bounce rate looks obscenely low.
+    AnalyticsProvider.ignoreFirstPageLoad(true);
+
+
+})
+
     .config(function($httpProvider){
         $httpProvider.defaults.headers.common = {};
         $httpProvider.defaults.headers.post = {};
@@ -20,7 +33,7 @@ debate
     .config(function($stateProvider, $urlRouterProvider){
 
         $urlRouterProvider.when('/hi/:userkey',function($match, $http, villasApi, $state){
-            return $http.get('http://api.evsvillas.com/index.php/login/'+ $match.userkey).success(function(result){
+            return $http.get('http://apidev.evsvillas.com/index.php/login/'+ $match.userkey).success(function(result){
 
                 villasApi.userkey = $match.userkey;
                 villasApi.appdata = result;
@@ -48,7 +61,7 @@ debate
                 resolve:{
                     user:function($cookies, $http,villasApi){
                         if(!villasApi.userkey && $cookies.userkey){
-                           return $http.get('http://api.evsvillas.com/index.php/login/'+ $cookies.userkey).success(function(result){
+                           return $http.get('http://apidev.evsvillas.com/index.php/login/'+ $cookies.userkey).success(function(result){
 
                                 villasApi.userkey = $cookies.userkey;
                                 villasApi.appdata = result;
