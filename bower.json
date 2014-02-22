@@ -7,7 +7,8 @@
     "angular-bootstrap": "~0.10.0",
     "roundabout": "~2.4.2",
     "angular-google-analytics": "~0.0.1",
-    "angular-ui-router": "~0.2.8"
+    "angular-ui-router": "0.2.8-bowratic-tedium",
+    "angular-cookies": "~1.2.13"
   },
   "devDependencies": {},
   "resolutions": {

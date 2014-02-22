@@ -6,11 +6,24 @@ var debate = angular.module('debate',[
     'ui.router',
     'ui.bootstrap',
     'debate.ctrl',
-    'debate.services'
+    'debate.services',
+    'angular-google-analytics'
 ]);
 
-
 debate
+    .config(function(AnalyticsProvider){
+    // initial configuration
+    AnalyticsProvider.setAccount('UA-47169705-1');
+
+    // track all routes (or not)
+    AnalyticsProvider.trackPages(true);
+
+    // Ignore first page view... helpful when using hashes and whenever your bounce rate looks obscenely low.
+    AnalyticsProvider.ignoreFirstPageLoad(true);
+
+
+})
+
     .config(function($httpProvider){
         $httpProvider.defaults.headers.common = {};
         $httpProvider.defaults.headers.post = {};
