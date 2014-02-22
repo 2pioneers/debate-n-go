@@ -20,7 +20,7 @@ debate
     .config(function($stateProvider, $urlRouterProvider){
 
         $urlRouterProvider.when('/hi/:userkey',function($match, $http, villasApi, $state){
-            return $http.get('http://api.evsvillas.com/index.php/login/'+ $match.userkey).success(function(result){
+            return $http.get('http://apidev.evsvillas.com/index.php/login/'+ $match.userkey).success(function(result){
 
                 villasApi.userkey = $match.userkey;
                 villasApi.appdata = result;
@@ -48,7 +48,7 @@ debate
                 resolve:{
                     user:function($cookies, $http,villasApi){
                         if(!villasApi.userkey && $cookies.userkey){
-                           return $http.get('http://api.evsvillas.com/index.php/login/'+ $cookies.userkey).success(function(result){
+                           return $http.get('http://apidev.evsvillas.com/index.php/login/'+ $cookies.userkey).success(function(result){
 
                                 villasApi.userkey = $cookies.userkey;
                                 villasApi.appdata = result;
