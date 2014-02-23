@@ -1,6 +1,6 @@
 {
   "name": "debate-n-go",
-  "version": "0.2.0",
+  "version": "1.1.4",
   "description": "An app for collecting user feedback.  Pre-polling",
   "main": "app/src",
   "devDependencies": {
