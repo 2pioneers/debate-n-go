@@ -9,7 +9,7 @@ angular.module('debate.services',[])
     .factory('villasApi',function($http,$q){
         return{
              api : {
-                host: 'http://api.evsvillas.com/index.php/',
+                host: 'http://apidev.evsvillas.com/index.php/',
                 endpoints: {
                     login: 'login/',
                     setnickname: 'updateusername/',

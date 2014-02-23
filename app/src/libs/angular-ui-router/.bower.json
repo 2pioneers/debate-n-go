@@ -26,5 +26,6 @@
   },
   "_source": "git://github.com/angular-ui/ui-router.git",
   "_target": "0.2.8-bowratic-tedium",
-  "_originalSource": "angular-ui-router"
+  "_originalSource": "angular-ui-router",
+  "_direct": true
 }
