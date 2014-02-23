@@ -1,6 +1,6 @@
 {
   "name": "debate-ngo",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "dependencies": {
     "angular": "~1.2.13",
     "bootstrap": "~3.1.1",
@@ -11,7 +11,9 @@
     "angular-cookies": "~1.2.13",
     "json3": "~3.3.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "jquery": "~2.1.0"
+  },
   "resolutions": {
     "angular": "~1.2.13"
   }
